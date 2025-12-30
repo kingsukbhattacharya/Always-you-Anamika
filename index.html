@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Anamika ❤️</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Georgia', serif;
+            overflow-x: hidden;
+            text-align: center;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            max-width: 500px;
+            z-index: 10;
+            border: 2px solid #ff4d6d;
+            transition: 0.5s;
+        }
+
+        h1 { color: #d63384; font-size: 2.2rem; }
+        p { color: #444; line-height: 1.6; }
+
+        .buttons { margin-top: 30px; display: flex; justify-content: center; gap: 20px; }
+        
+        button {
+            padding: 12px 25px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        #yesBtn { background-color: #ff4d6d; color: white; }
+        #noBtn { background-color: #6c757d; color: white; position: absolute; }
+
+        /* Photo Gallery Styling */
+        .gallery {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 15px;
+            border: 3px solid #ff4d6d;
+        }
+
+        .hidden { display: none; }
+
+        .heart {
+            position: fixed;
+            top: -10%;
+            font-size: 20px;
+            color: #ff4d6d;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            to { transform: translateY(110vh) rotate(360deg); }
+        }
+
+        #memoriesBtn {
+            background-color: #ff758c;
+            color: white;
+            margin-top: 20px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="mainCard">
+        <h1>Anamika... ❤️</h1>
+        <p>I am so sorry for yesterday. I never want you to feel anything less than the most special woman in my life.</p>
+        <p><strong>Will you forgive me and stay mine forever?</strong></p>
+        
+        <div class="buttons">
+            <button id="yesBtn" onclick="showSuccess()">Yes, I will!</button>
+            <button id="noBtn" onmouseover="moveButton()">No</button>
+        </div>
+    </div>
+
+    <div class="container hidden" id="successCard">
+        <h1>I Love You, Anamika! ❤️</h1>
+        <p>You've made me the happiest person alive. Here's to us and our beautiful memories together.</p>
+        
+        <div class="gallery">
+            <img src="C:\Users\kingsuk bhattacharya\Downloads\InFerry.JPEG" alt="Our Memory 1">
+            <img src="C:\Users\kingsuk bhattacharya\Downloads\1stMeet.JPEG" alt="Our Memory 2">
+            <img src="C:\Users\kingsuk bhattacharya\Downloads\AnamikaKingsuk.JPEG" alt="Our Memory 3">
+            <img src="C:\Users\kingsuk bhattacharya\Downloads\SpecialMoment.JPEG" alt="Our Memory 4">
+        </div>
+        
+        <p style="margin-top: 20px; font-style: italic;">"Every moment with you is a treasure."</p>
+    </div>
+
+    <script>
+        function moveButton() {
+            const btn = document.getElementById('noBtn');
+            const x = Math.random() * (window.innerWidth - btn.offsetWidth);
+            const y = Math.random() * (window.innerHeight - btn.offsetHeight);
+            btn.style.left = x + 'px';
+            btn.style.top = y + 'px';
+        }
+
+        function showSuccess() {
+            document.getElementById('mainCard').classList.add('hidden');
+            document.getElementById('noBtn').classList.add('hidden');
+            document.getElementById('successCard').classList.remove('hidden');
+            setInterval(createHeart, 300);
+        }
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 5000);
+        }
+    </script>
+</body>
+</html>
